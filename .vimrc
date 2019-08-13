@@ -52,6 +52,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'fatih/vim-go'
 
 "" Color
 NeoBundle 'tomasr/molokai'
@@ -79,9 +80,9 @@ set fileencodings=utf-8
 set backspace=indent,eol,start
 
 "" Tabs. May be overriten by autocmd rules
-set tabstop=4
+set tabstop=2
 set softtabstop=0
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 
 "" Map leader to ,
@@ -145,9 +146,12 @@ if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
 
+" others
+set autowrite
+
 " vim-airline
 let g:airline_theme = 'powerlineish'
-let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#syntastic#enabled = 0
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
@@ -184,6 +188,7 @@ let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
+let g:syntastic_mode_map = { 'mode': 'passive' }
 
 " syntastic
 let g:syntastic_always_populate_loc_list=1
@@ -221,6 +226,14 @@ vmap < <gv
 vmap > >gv
 
 "" Custom configs
+"*****************************************************************************
+"" Go
+"*****************************************************************************
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <Leader>c  <Plug>(go-coverage-toggle)
+
 "*****************************************************************************
 "" Python 
 "*****************************************************************************
