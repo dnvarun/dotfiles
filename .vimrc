@@ -51,12 +51,19 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "*****************************************************************************
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-commentary'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'fatih/vim-go'
 
 "" Color
 NeoBundle 'tomasr/molokai'
+" NeoBundle 'dracula/vim'
 NeoBundle "scrooloose/syntastic"
+
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'mdempsky/gocode'
+NeoBundle 'udalov/kotlin-vim'
 
 
 call neobundle#end()
@@ -110,11 +117,14 @@ set smartcase
 "" Visual Settings
 "*****************************************************************************
 syntax on
+hi Visual term=reverse cterm=reverse guibg=Grey
 set ruler
 set number
+" set relativenumber
 
 let no_buffers_menu=1
 if !exists('g:not_finsh_neobundle')
+  " colorscheme dracula
   colorscheme molokai
 endif
 
@@ -165,7 +175,8 @@ let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
-noremap <F3> :NERDTreeToggle<CR>
+" noremap <F3> :NERDTreeToggle<CR>
+nnoremap <C-g> :NERDTreeToggle<CR>
 
 
 "*****************************************************************************
@@ -216,10 +227,10 @@ noremap <leader>c :bd<CR>
 nnoremap <silent> <leader><space> :noh<cr>
 
 "" Switching windows
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <C-h> <C-w>h
+noremap <C-j> 10j
+noremap <C-k> 10k
+" noremap <C-l> <C-w>l
+" noremap <C-h> <C-w>h
 
 "" Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
@@ -233,6 +244,12 @@ autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <Leader>c  <Plug>(go-coverage-toggle)
+let g:go_fmt_command = "goimports"
+" let g:go_auto_type_info = 1
+
+" navigating easily
+noremap <leader>j 10j
+noremap <leader>k 10k
 
 "*****************************************************************************
 "" Python 
@@ -295,4 +312,8 @@ else
 endif
 " Color
 " colorscheme badwolf
-
+hi Visual term=reverse cterm=reverse guibg=Grey
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
