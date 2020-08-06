@@ -55,15 +55,23 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'fatih/vim-go'
+" NeoBundle 'ycm-core/YouCompleteMe'
+NeoBundle 'davidhalter/jedi-vim'
 
 "" Color
 NeoBundle 'tomasr/molokai'
 " NeoBundle 'dracula/vim'
-NeoBundle "scrooloose/syntastic"
+" NeoBundle 'scrooloose/syntastic'
+NeoBundle 'vim-syntastic/syntastic'
 
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'mdempsky/gocode'
 NeoBundle 'udalov/kotlin-vim'
+
+" python specific
+NeoBundle 'tmhedberg/SimpylFold'
+" NeoBundle 'nvie/vim-flake8'
+NeoBundle 'psf/black'
 
 
 call neobundle#end()
@@ -151,7 +159,6 @@ set wildmode=longest,list,full
 set wildmenu
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
-
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
@@ -199,16 +206,9 @@ let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
-let g:syntastic_mode_map = { 'mode': 'passive' }
-
-" syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_aggregate_errors = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 1
+let g:syntastic_mode_map = { 'mode': 'passive', "active_filetypes": ["python"] }
 
 noremap YY "+y<CR>
 noremap <leader>p "+gP<CR>
@@ -254,18 +254,26 @@ noremap <leader>k 10k
 "*****************************************************************************
 "" Python 
 "*****************************************************************************
-
+" https://realpython.com/vim-and-python-a-match-made-in-heaven/
 " vim-python
 augroup vimrc-python
   autocmd!
   autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
       \ formatoptions+=croq softtabstop=4 smartindent
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+  autocmd FileType python nmap <C-]> <leader>d
+  autocmd BufWritePre *.py execute ':Black'
 augroup END
 
 " syntastic
-let g:syntastic_python_checkers=['python', 'flake8']
-let g:syntastic_python_flake8_post_args='--ignore=W391'
+let g:syntastic_python_checkers=['python',"flake8"]
+" let g:syntastic_python_flake8_post_args='--ignore=W391,W503,E123,E126,E128'
+let g:syntastic_python_flake8_post_args='--ignore=E501,E231,W503'
+let g:black_linelength=79
+
+" let g:ycm_autoclose_preview_window_after_completion=1
+" map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:jedi#show_call_signatures = "2"
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
