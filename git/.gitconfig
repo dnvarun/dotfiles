@@ -1,0 +1,17 @@
+[user]
+  email = d.nagavarun@gmail.com
+  name = Varun Dasari
+[url "git@source.golabs.io:"]
+	insteadOf = https://source.golabs.io
+[url "git@gitlab.com:"]
+  insteadOf = https://gitlab.com
+[url "git@github.com:"]
+  insteadOf = https://github.com
+
+; [includeIf "gitdir:/Users/varun/code/flyfin/"]
+;   path = /Users/varun/code/flyfin/.gitconfig
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
