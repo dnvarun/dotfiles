@@ -21,8 +21,9 @@ git clone https://github.com/dnvarun/dotfiles
 ## Setup github
 - Create ssh key
 ```
-
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
+- Add to https://github.com/settings/keys
 
 install Xcode
 install vscode
