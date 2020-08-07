@@ -7,7 +7,7 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
-export GITHUB_AWESOME_PARSER_TOKEN="6705a38025972a0dea9e0d0aaefc66f5e0c8c623"
+export GITHUB_AWESOME_PARSER_TOKEN=""
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator

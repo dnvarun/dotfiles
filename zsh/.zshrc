@@ -87,7 +87,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 #export HOMEBREW_GITHUB_API_TOKEN=c4e4d028d122fc779b8c26cf471c7e6cf94a4719
-export HOMEBREW_GITHUB_API_TOKEN=5f12b9c818d3ed59c5167fb53e8d1097bff978d0
+export HOMEBREW_GITHUB_API_TOKEN=
 autoload -Uz promptinit
 promptinit
 alias a5="ssh nagavarun@10.40.0.11"
