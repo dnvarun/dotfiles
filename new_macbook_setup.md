@@ -1,5 +1,5 @@
 install Chrome
-
+install Xcode (in parallel)
 
 ## Clone dotfiles
 ```
@@ -25,6 +25,26 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 - Add to https://github.com/settings/keys
 
-install Xcode
-install vscode
+
+## Vscode
+- install vscode
+- install vim plugin
+- install chrome debugger
+- keybindings.json
+
+## brew
+- setup homebrew
+- brew install yarn
+- brew install git-lfs
+- brew install python
+- brew install postgresql
+- Some issue in pipenv install psycopg2. Have to export some env variables
+https://github.com/pypa/pipenv/issues/3991#issuecomment-564645309
+
+## docker
+- install docker https://docs.docker.com/docker-for-mac/install/
+
+## xcode
+- sudo gem install cocoapods
+- 
 
