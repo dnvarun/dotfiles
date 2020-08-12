@@ -30,7 +30,8 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 - install vscode
 - install vim plugin
 - install chrome debugger
-- keybindings.json
+- keybindings.json for jumping 10 lines using c-j
+- for press and hold j to work: https://stackoverflow.com/questions/39972335/how-do-i-press-and-hold-a-key-and-have-it-repeat-in-vscode
 
 ## brew
 - setup homebrew
@@ -40,6 +41,10 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 - brew install postgresql
 - Some issue in pipenv install psycopg2. Have to export some env variables
 https://github.com/pypa/pipenv/issues/3991#issuecomment-564645309
+- Install vim again via homebrew because macvim uses system python I think (which is python 2.7)
+- You might face this issue with running black in vim
+https://github.com/psf/black/issues/1293#issuecomment-594459074
+- install black and flake8 globally using brew if they are not in project pipfile
 
 ## docker
 - install docker https://docs.docker.com/docker-for-mac/install/
